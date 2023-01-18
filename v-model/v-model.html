@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Hello World</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@next"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="app" style="text-align: center">
+      <input v-model="value" />
+      <p>{{ value }}</p>
+    </div>
+    <script type="module">
+      import { createApp } from "vue";
+      createApp({
+        data: {
+          value: "",
+        },
+      });
+    </script>
+  </body>
+</html>
