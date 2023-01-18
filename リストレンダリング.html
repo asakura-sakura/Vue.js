@@ -1,12 +1,15 @@
 <html>
   <head>
-    <title>出力</title>
+    <title>リストレンダリング</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <div id="app">
     <body>
-      <div id="intro" style="text-align: center">
-        <h1>{{ message }}</h1>
+      <div id="intro">
+        <h1>三大フレームワーク</h1>
+        <ul>
+          <li v-for="flamework in flameworks">{{ flamework }}</li>
+        </ul>
       </div>
     </body>
   </div>
@@ -16,7 +19,7 @@
   createApp({
     data() {
       return {
-        message: "Hello World",
+        flameworks: ["vue", "react", "angular"],
       };
     },
   }).mount("#app");
