@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Hello World</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <div id="app">
+    <body>
+      <div id="intro" style="text-align: center">
+        <a v-bind:href="url" target="_blank">Click Me</a><br />
+      </div>
+    </body>
+  </div>
+</html>
+<script>
+  var vue_det = new Vue({
+    el: "#intro",
+    data: {
+      url: "http://www.google.com",
+    },
+  });
+</script>
