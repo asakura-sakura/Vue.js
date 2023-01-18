@@ -6,8 +6,7 @@
   <div id="app">
     <body>
       <div id="intro" style="text-align: center">
-        <input v-model="value" />
-        <p>{{ value }}</p>
+        <h1>{{ message }}</h1>
       </div>
     </body>
   </div>
@@ -17,7 +16,7 @@
   createApp({
     data() {
       return {
-        value: "",
+        message: "Hello World",
       };
     },
   }).mount("#app");
