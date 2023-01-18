@@ -5,9 +5,11 @@
   </head>
   <div id="app">
     <body>
-      <div id="intro" style="text-align: center">
+      <div style="text-align: center">
         <button v-on:click="reverseFlg">Click Me</button>
-        <h2 v-if="showFlg">{{ message }}</h2>
+        <h1 v-if="showFlg === 1">{{ message1 }}</h1>
+        <h1 v-else-if="showFlg === 2">{{ message2 }}</h1>
+        <h1 v-else>{{ message3 }}</h1>
       </div>
     </body>
   </div>
@@ -15,16 +17,17 @@
 <script type="text/javascript">
   const { createApp } = Vue;
   createApp({
-    el: "#intro",
     data() {
       return {
-        message: "Hello World",
-        showFlg: true,
+        message1: "Hello World",
+        message2: "Hello",
+        message3: "World",
+        showFlg: 0,
       };
     },
     methods: {
       reverseFlg: function () {
-        this.showFlg = !this.showFlg;
+        this.showFlg = ++this.showFlg % 3;
       },
     },
   }).mount("#app");

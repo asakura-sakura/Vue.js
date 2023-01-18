@@ -1,23 +1,30 @@
 <html>
   <head>
-    <title>出力</title>
+    <title>条件付きディスプレイ</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <div id="app">
     <body>
       <div style="text-align: center">
-        <h1>{{ message }}</h1>
+        <button v-on:click="reverseFlg">Click Me</button>
+        <h1 v-show="showFlg">{{ message }}</h1>
       </div>
     </body>
   </div>
 </html>
-<script>
+<script type="text/javascript">
   const { createApp } = Vue;
   createApp({
     data() {
       return {
         message: "Hello World",
+        showFlg: true,
       };
+    },
+    methods: {
+      reverseFlg: function () {
+        this.showFlg = !this.showFlg;
+      },
     },
   }).mount("#app");
 </script>
