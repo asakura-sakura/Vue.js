@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>TODO</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <div id="app">
+    <form @submit.prevent="addTodo">
+      <input v-model="newTodo" placeholder="TODO追加" />
+      <button type="submit">追加</button>
+    </form>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">
+        <input type="checkbox" v-model="todo.completed" />
+        <span v-if="!todo.editing" :class="{'completed': todo.completed}"
+          >{{ todo.text }}</span
+        >
+        <input
+          v-else
+          v-model="todo.text"
+          @blur="todo.editing = false"
+          @keyup.enter="todo.editing = false"
+        />
+        <button @click="removeTodo(todo)">削除</button>
+        <button v-if="!todo.editing" @click="todo.editing = true">編集</button>
+      </li>
+    </ul>
+    <button @click="saveTodos">保存</button>
+  </div>
+</html>
+
+<script>
+  const { createApp } = Vue;
+  createApp({
+    data() {
+      return {
+        newTodo: "",
+        todos: JSON.parse(localStorage.getItem("todos")) || [],
+      };
+    },
+    methods: {
+      addTodo() {
+        let text = this.newTodo.trim();
+        if (text) {
+          this.todos.push({
+            id: this.todos.length + 1,
+            text,
+            completed: false,
+          });
+          this.newTodo = "";
+        }
+      },
+      removeTodo(todo) {
+        this.todos = this.todos.filter((t) => t.id !== todo.id);
+      },
+      saveTodos() {
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+      },
+    },
+  }).mount("#app");
+</script>
