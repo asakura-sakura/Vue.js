@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>カスタムディレクティブ使用</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div id="my-note" v-my-note="{ color: 'white', text: 'hello!' }"></div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const app = Vue.createApp({});
+  app.directive("myNote", {
+    // el: 紐付けられた要素
+    // binding: ディレクティブ引数や値
+    // vnode: Vue.jsの仮想ノード
+    bind(el, binding, vnode) {
+      console.log("memo directive was bound!");
+      el.style.color = binding.value.color;
+      el.innerText = binding.value.text;
+    },
+  });
+</script>

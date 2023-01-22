@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>計算プロパティーなし</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>合計金額: {{ calculateTotalPrice() }} 円</p>
+      <input type="text" v-model="price" />
+      <input type="text" v-model="amount" />
+      <button @click="addProduct">商品追加</button>
+    </div>
+  </body>
+</html>
+<script>
+  const { createApp } = Vue;
+  createApp({
+    data() {
+      return {
+        price: 0,
+        amount: 0,
+        products: [
+          { price: 100, amount: 2 },
+          { price: 200, amount: 3 },
+          { price: 300, amount: 1 },
+        ],
+      };
+    },
+    methods: {
+      addProduct() {
+        let newProduct = {
+          price: Number(this.price),
+          amount: Number(this.amount),
+        };
+        this.products.push(newProduct);
+      },
+      calculateTotalPrice() {
+        let total = 0;
+        this.products.forEach((product) => {
+          total = total + product.price * product.amount;
+        });
+        return total;
+      },
+    },
+  }).mount("#app");
+</script>
