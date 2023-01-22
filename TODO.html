@@ -11,9 +11,7 @@
     <ul>
       <li v-for="todo in todos" :key="todo.id">
         <input type="checkbox" v-model="todo.completed" />
-        <span v-if="!todo.editing" :class="{'completed': todo.completed}"
-          >{{ todo.text }}</span
-        >
+        <span v-if="!todo.editing">{{ todo.text }}</span>
         <input
           v-else
           v-model="todo.text"
@@ -50,6 +48,7 @@
         }
       },
       removeTodo(todo) {
+        console.log(todo);
         this.todos = this.todos.filter((t) => t.id !== todo.id);
       },
       saveTodos() {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>メモバインディング</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div style="text-align: center">
+        <ul>
+          <li v-for="memo in memos" v-memo="[]">{{ memo.name }}</li>
+        </ul>
+        <button @click="addMemos">追加 memos</button>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const { createApp } = Vue;
+  createApp({
+    data() {
+      return {
+        memos: [
+          { id: 1, name: "memo 1" },
+          { id: 2, name: "memo 2" },
+          { id: 3, name: "memo 3" },
+        ],
+      };
+    },
+    methods: {
+      addMemos() {
+        for (let i = 4; i <= 10; i++) {
+          this.memos.push({ id: i, name: `memo ${i}` });
+        }
+      },
+    },
+  }).mount("#app");
+</script>

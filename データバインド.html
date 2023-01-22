@@ -1,13 +1,12 @@
 <html>
   <head>
-    <title>Hello World</title>
+    <title>データバインド</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <div id="app">
     <body>
-      <div id="intro" style="text-align: center">
-        <input v-model="value" />
-        <p>{{ value }}</p>
+      <div style="text-align: center">
+        <a v-bind:href="url" target="_blank">Googleへ</a><br />
       </div>
     </body>
   </div>
@@ -17,7 +16,7 @@
   createApp({
     data() {
       return {
-        value: "",
+        url: "http://www.google.com",
       };
     },
   }).mount("#app");

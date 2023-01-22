@@ -1,12 +1,15 @@
 <html>
   <head>
-    <title>関数</title>
+    <title>イベントリスナー</title>
     <script src="https://unpkg.com/vue@next"></script>
   </head>
   <div id="app">
     <body>
-      <div style="text-align: center">
-        <h1>{{ greeting() }}</h1>
+      <div>
+        <div style="text-align: center">
+          <h1 v-text="count"></h1>
+          <button v-on:click="countUp">カウントアップ</button>
+        </div>
       </div>
     </body>
   </div>
@@ -16,12 +19,12 @@
   createApp({
     data() {
       return {
-        message: "Hello World",
+        count: 0,
       };
     },
     methods: {
-      greeting() {
-        return this.message;
+      countUp() {
+        this.count++;
       },
     },
   }).mount("#app");
